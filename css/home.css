@@ -1,0 +1,203 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; } /* HTML5 display-role reset for older browsers */ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; } body { line-height: 1; } ol, ul { list-style: none; } blockquote, q { quotes: none; } blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; } table { border-collapse: collapse; border-spacing: 0; }
+
+.header_bd {
+	background: #282A2E;
+	width: 100%;
+	height: 50px;
+	padding: 5px 0;
+	margin: 0;
+}
+.header_bd .header{
+	margin: 0 auto;
+	height: auto;
+	top: 10px;
+	width: 80%;
+}
+.header .logo{
+	float: left;
+	width: 50px;
+}
+.header .search{
+	margin-left: 300px;
+	margin-top: 10px;
+	width: 150px;
+	float: left;
+}
+.header .setting #btnSetting{
+	background: url("../images/setting.png") no-repeat;
+	background-size: cover;
+	width: 50px;
+	height: 48px;
+	float: right;
+}
+
+.content{
+	background: #FAFBFC;
+	width: 80%;
+	height: auto;
+	margin: 10px auto;
+	border: 1px solid #000;
+	top: 50px
+}
+.content .newbest,
+.content .new_all{
+	height: 200px;
+	border: 1px solid #000;
+	margin-top: 10px;
+}
+
+.content .newbest .newbest1,
+.content .new_all .new_left{
+	border: 1px solid #000;
+	width: 23%;
+	height: 100%;
+	float: left;
+}
+.content .new_all .new,
+.content .newbest .newbest2,
+.content .newbest .newbest3{
+	border: 1px solid #000;
+	width: 23%;
+	height: 100%;
+	float: left;
+	margin-left: 2.3%;
+}
+.content .newbest .newbest4,
+.content .new_all .new_right{
+	border: 1px solid #000;
+	width: 23%;
+	height: 100%;
+	float: right;
+}
+.new_content{
+	border: 1px solid #000;
+	width: 100%;
+	height: 50%;
+	margin: 2px 0px;
+	float: left;
+}
+.footer{
+	background: #282A2E;
+	width: 100%;
+	height: 100px;
+	text-align: center;
+	color: #F1F1F1;
+}
+
+.clear{
+	clear: both;
+}
+
+.setting-new{
+	width: 100%;
+	height: 70px;
+	border: 1px solid #000;
+	margin-bottom: 2px;
+}
+
+img.content {
+	width: 100;
+	height: 100;
+	float: left;
+	margin-right: 5px;
+}
+
+img.btn_close {
+	float: right; 
+	margin: -28px -28px 0 0;
+}
+
+#mask {
+	display: none;
+	background: #000; 
+	position: fixed; left: 0; top: 0; 
+	z-index: 10;
+	width: 100%; height: 100%;
+	opacity: 0.8;
+	z-index: 999;
+}
+
+.setting-popup{
+	display:none;
+	background: #fff;
+	padding: 10px; 	
+	width: 50%;
+	border: 2px solid #ddd;
+	float: left;
+	font-size: 1.2em;
+	position: fixed;
+	top: 50%; left: 50%;
+	z-index: 99999;
+	box-shadow: 0px 0px 20px #999;
+	-moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+    -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+	border-radius:3px 3px 3px 3px;
+    -moz-border-radius: 3px; /* Firefox */
+    -webkit-border-radius: 3px; /* Safari, Chrome */
+}
+.setting-popup .setting-new .box{
+	width: 60px;
+	margin-left: 9%;
+	float: left;
+	margin-top: 10px;
+}
+.setting-popup .setting-new .done{
+	display: none;
+    width: 10px;
+    height: 10px;
+    float: left;
+    vertical-align: top;
+    background: url("../images/camera_test.png") no-repeat;
+    background-size: cover;
+    z-index: 999;
+}
+.setting-popup .setting-new .image_check:hover{
+	-webkit-box-shadow: 3px 3px 5px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    3px 3px 5px 0px rgba(50, 50, 50, 0.75);
+    box-shadow:         3px 3px 5px 0px rgba(50, 50, 50, 0.75);
+}
+.show{
+    display: block !important;
+}
+
+li {
+	list-style: none outside none;
+}
+/* @media */
+@media all and (max-width: 700px) and (min-width: 0px) {
+	.header .logo{
+		display: none;
+	}
+	.header .search{
+		margin-left: 0px;
+		margin-top: 10px;
+		width: 4px;
+		float: left;
+	}
+	.header .setting{
+		background: url("../images/setting.png") no-repeat;
+		background-size: cover;
+		width: 50px;
+		height: 48px;
+		float: right;
+	}
+
+	.content .newbest,
+	.content .new_all{
+		height: 200px;
+		border: 1px solid #000;
+		margin-top: 10px;
+	}
+	.content .newbest .newbest1,
+	.content .new_all .new_left,
+	.content .new_all .new,
+	.content .newbest .newbest2,
+	.content .newbest .newbest3,
+	.content .newbest .newbest4,
+	.content .new_all .new_right{
+		border: 1px solid #000;
+		width: 100%;
+		height: 100%;
+		float: right;
+	}
+}

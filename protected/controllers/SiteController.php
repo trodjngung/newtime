@@ -3,6 +3,13 @@
 class SiteController extends Controller
 {
 	var $components = array('Xml');
+	var $url = array(
+			// "http://www.24h.com.vn/upload/rss/tintuctrongngay.rss",
+			'dantri'=>"http://dantri.com.vn/trangchu.rss",
+			'vnexpress'=>"http://vnexpress.net/rss/tin-moi-nhat.rss",
+			'tinhte'=>"http://www.tinhte.vn/rss/",
+			'kenh14'=>"http://kenh14.vn/home.rss",
+		);
 	/**
 	 * Declares class-based actions.
 	 */
@@ -28,9 +35,43 @@ class SiteController extends Controller
 	 */
 	public function actionIndex()
 	{
-		// renders the view file 'protected/views/site/index.php'
-		// using the default layout 'protected/views/layouts/main.php'
-		$this->render('index');
+		$setting = Yii::app()->request->cookies['setting'];
+		if(isset($_POST) && $_POST != NULL) {
+			Yii::app()->request->cookies->clear();
+			$cookie = new CHttpCookie('setting', json_encode($_POST['setting']));
+			$cookie->expire = time()+60*60*24*180;
+			Yii::app()->request->cookies['setting'] =  $cookie;//json_decode
+			foreach ($_POST['setting'] as $key => $value) {
+				if (!(Yii::app()->cache->get($value))) {
+					$this->ReadRss($value);
+				}
+			}
+			$this->render('index', array('setting'=>$this->url, 'cookies'=>$_POST['setting']));
+		} elseif ($setting) {
+			$data = json_decode($setting);
+			foreach ($data as $key => $value) {
+				if (!(Yii::app()->cache->get($value))) {
+					$this->ReadRss($value);
+				}
+			}
+			$this->render('index', array('setting'=>$this->url, 'cookies'=>$data));
+		} else {
+			$this->ReadRss('vnexpress');
+			$this->render('index', array('setting'=>$this->url));
+		}
+
+
+		// {
+		// 	$this->ReadRss('vnexpress');
+		// 	$this->render('index', array('setting'=>$this->url));
+		// }
+		
+		// if(Yii::app()->cache->get('vnexpress')) {
+		// 	$this->render('index', array('setting'=>$this->url));
+		// } else {
+		// 	$this->ReadRss();
+		// 	$this->render('index', array('setting'=>$this->url));
+		// }
 	}
 
 	/**
@@ -111,25 +152,38 @@ class SiteController extends Controller
 	/**
 	* Read file xml test
 	*/
-	public function actionReadXml()
+	public function ReadRssAdmin()
 	{
-		$url = array(
-			"http://www.24h.com.vn/upload/rss/tintuctrongngay.rss",
-			"http://dantri.com.vn/trangchu.rss",
-			"http://vnexpress.net/rss/tin-moi-nhat.rss",
-			"http://www.tinhte.vn/rss/",
-			"http://kenh14.vn/home.rss",
-		);
-
-		foreach ($url as $key => $value) {
-			$xmlString = Yii::app()->xml->xmlFileToString($value);
-			$customFormInfo[] = Yii::app()->xml->xmlToArray($xmlString, $this , $cust_info);
+		foreach ($this->url as $key => $value) {
+			$this->SaveCache($value, $key);
 		}
-		// $xmlString = Yii::app()->xml->xmlFileToString($url);
-		// $customFormInfo = Yii::app()->xml->xmlToArray($xmlString, $this , $cust_info);
+	}
 
-		// die(var_dump($customFormInfo));
-		print_r($customFormInfo);
+	public function SaveCache($url, $name)
+	{
+		$time = 30;
+		$xmlString = Yii::app()->xml->xmlFileToString($url);
+		$customFormInfo = Yii::app()->xml->xmlToArray($xmlString, $this , $cust_info);
+		Yii::app()->cache->set($name, $customFormInfo, $time);
+	}
+
+	public function ReadRss($name)
+	{
+		$url = $this->url[$name];
+		$time = 30;
+		$xmlString = Yii::app()->xml->xmlFileToString($url);
+		$customFormInfo = Yii::app()->xml->xmlToArray($name, $xmlString, $this , $cust_info);
+		Yii::app()->cache->set($name, $customFormInfo, $time);
+	}
+
+	/**
+	*Phân tích thông tin
+	*pardam: dữ liệu đọc file rss
+	*return: các thể loại đã được chia ra
+	*/
+	public function Categories($data)
+	{
 
 	}
+
 }

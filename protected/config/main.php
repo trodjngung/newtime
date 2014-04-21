@@ -80,6 +80,13 @@ return array(
 			),
 		),
 		'xml'=>array('class'=>'XmlMgrComponent'),
+		
+		//cache
+		'cache'=>array( 
+	    	'class'=>'system.caching.CDbCache'
+		),
+		//cookies
+		'Cookies' => array('class' => 'application.components.CookiesHelper'),
 	),
 
 	// application-level parameters that can be accessed
