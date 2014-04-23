@@ -1,7 +1,7 @@
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; } /* HTML5 display-role reset for older browsers */ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; } body { line-height: 1; } ol, ul { list-style: none; } blockquote, q { quotes: none; } blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; } table { border-collapse: collapse; border-spacing: 0; }
 
 .header_bd {
-	background: #282A2E;
+	background: #0044CC;
 	width: 100%;
 	height: 50px;
 	padding: 5px 0;
@@ -25,7 +25,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 }
 .header .setting #btnSetting{
 	background: url("../images/setting.png") no-repeat;
-	background-size: cover;
+	background-size: contain;
 	width: 50px;
 	height: 48px;
 	float: right;
@@ -77,7 +77,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 	float: left;
 }
 .footer{
-	background: #282A2E;
+	background: #0044CC;
 	width: 100%;
 	height: 100px;
 	text-align: center;
@@ -90,16 +90,17 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 
 .setting-new{
 	width: 100%;
-	height: 70px;
-	border: 1px solid #000;
-	margin-bottom: 2px;
+	height: 160px;
+	border: 1px solid #0044CC;
+	margin-bottom: 8px;
+	word-wrap: break-word;
 }
 
 img.content {
 	width: 100;
 	height: 100;
 	float: left;
-	margin-right: 5px;
+	margin: 0px 5px 0px 0px;
 }
 
 img.btn_close {
@@ -122,7 +123,6 @@ img.btn_close {
 	background: #fff;
 	padding: 10px; 	
 	width: 50%;
-	border: 2px solid #ddd;
 	float: left;
 	font-size: 1.2em;
 	position: fixed;
@@ -140,21 +140,51 @@ img.btn_close {
 	margin-left: 9%;
 	float: left;
 	margin-top: 10px;
+	position: relative;
 }
-.setting-popup .setting-new .done{
+.setting-popup .setting-new .box .done{
 	display: none;
-    width: 10px;
-    height: 10px;
-    float: left;
+    width: 12px;
+    height: 14px;
+    float: right;
     vertical-align: top;
-    background: url("../images/camera_test.png") no-repeat;
+    background: url("../images/checkbox.png") no-repeat;
     background-size: cover;
-    z-index: 999;
+    z-index: 1;
+    position: absolute;
+    right: 11px;
+    top: 35px;
 }
-.setting-popup .setting-new .image_check:hover{
+.setting-popup .setting-new .image_check{
+	width: 48px;
+	height: 48px;
+}
+.setting-popup .setting-new .selected{
+	border: 1px solid #0044CC;
+}
+.setting-popup .setting-new .box .image_check img{
+	width: 48px;
+	height: 48px;
+}
+.setting-popup .setting-new .box .name{
+	font-size: 15px;
+	margin-left: -15px;
+	text-align: center;
+	width: 80px;
+}
+.setting-popup .setting-new .box .image_check:hover,
+#submitSetting:hover{
 	-webkit-box-shadow: 3px 3px 5px 0px rgba(50, 50, 50, 0.75);
     -moz-box-shadow:    3px 3px 5px 0px rgba(50, 50, 50, 0.75);
     box-shadow:         3px 3px 5px 0px rgba(50, 50, 50, 0.75);
+}
+#submitSetting{
+	background-color: #0044CC;
+    color: #FFFFFF;
+    border: none;
+    width: 90px;
+    height: 40px;
+    margin-left: 41%;
 }
 .show{
     display: block !important;

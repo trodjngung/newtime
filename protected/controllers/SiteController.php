@@ -4,11 +4,13 @@ class SiteController extends Controller
 {
 	var $components = array('Xml');
 	var $url = array(
-			// "http://www.24h.com.vn/upload/rss/tintuctrongngay.rss",
+			'24h'=>"http://www.24h.com.vn/upload/rss/tintuctrongngay.rss",
 			'dantri'=>"http://dantri.com.vn/trangchu.rss",
 			'vnexpress'=>"http://vnexpress.net/rss/tin-moi-nhat.rss",
 			'tinhte'=>"http://www.tinhte.vn/rss/",
 			'kenh14'=>"http://kenh14.vn/home.rss",
+			'bongda'=>'http://www.bongda.com.vn/Rss/',
+			'bongdaplus'=>'http://bongdaplus.vn/rss/trang-chu.rss',
 		);
 	/**
 	 * Declares class-based actions.
@@ -167,10 +169,11 @@ class SiteController extends Controller
 		Yii::app()->cache->set($name, $customFormInfo, $time);
 	}
 
+
 	public function ReadRss($name)
 	{
 		$url = $this->url[$name];
-		$time = 30;
+		$time = 300;
 		$xmlString = Yii::app()->xml->xmlFileToString($url);
 		$customFormInfo = Yii::app()->xml->xmlToArray($name, $xmlString, $this , $cust_info);
 		Yii::app()->cache->set($name, $customFormInfo, $time);
@@ -181,9 +184,39 @@ class SiteController extends Controller
 	*pardam: dữ liệu đọc file rss
 	*return: các thể loại đã được chia ra
 	*/
-	public function Categories($data)
+	public function Categories()
 	{
+		$data = Yii::app()->cache;
+		$cookies = Yii::app()->request->cookies['setting'];
 
+		if($cookies) {
+			foreach ($cookies as $key => $valueSetting) {
+				$temp = $data[$key]['channel']['item'];
+				foreach ($temp as $value) {
+					if ($value['image']) {
+						
+					}
+					/*<div class="new_left">
+						<div class="new_content">
+							<a href="<?php echo $value['link']; ?>" target="_blank"><img class="content" src="<?php echo $value['image']; ?>"></a>
+							<span><?php echo $value['content']; ?></span>
+						</div>
+						<div class="new_content"></div>
+					</div>*/
+				}
+			}
+		} else {
+			$temp = $data['vnexpress']['channel']['item'];
+			foreach ($temp as $value) { ?>
+				<div class="new_left">
+					<div class="new_content">
+						<a href="<?php echo $value['link']; ?>" target="_blank"><img class="content" src="<?php echo $value['image']; ?>"></a>
+						<span><?php echo $value['content']; ?></span>
+					</div>
+					<div class="new_content"></div>
+				</div>
+			<?php }
+		}
 	}
 
 }

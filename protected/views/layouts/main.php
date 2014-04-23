@@ -62,11 +62,6 @@
 				<div class="logo">
 					<!-- <img height="70%" class="res" alt="Clear và Float" src="http://www.izwebz.com/wp-content/uploads/2009/08/xcss_series.jpg.pagespeed.ic.xUOM-YjJiV.jpg"> -->
 				</div>
-				<div class="search">
-					<form id="searchForm" method="get" action="http://www.izwebz.com">
-						<input id="s" type="text" name="s" value="" placeholder="Nhập từ khóa và enter">
-					</form>
-				</div>
 				<div class="setting">
 					<a id="btnSetting" href="#setting-box" class="setting-window" onclick="clickSetting()"></a>
 				</div>

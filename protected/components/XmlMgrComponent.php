@@ -34,7 +34,7 @@ class XmlMgrComponent extends CApplicationComponent {
 			$temp5 = '<span>';
 			$temp6 = '<br />';
 			switch ($name) {
-				case 'vnexpress.net':
+				case 'vnexpress':
 					for ($i=0; $i < count($temp); $i++) { 
 						$temp[$i]->content = $this->content($temp[$i]->description, $temp1);
 						$temp[$i]->image = $this->image($temp[$i]->description, $temp2);
@@ -62,12 +62,19 @@ class XmlMgrComponent extends CApplicationComponent {
 						
 					}
 					break;
-				default:
+				case '24h':
 					for ($i=0; $i < count($temp); $i++) { 
-						$temp[$i]->content = $this->content($temp[$i]->description, $temp1);
-						$temp[$i]->image = $this->image($temp[$i]->description, $temp2);
+						$temp[$i]->content = $temp[$i]->description;
+						$temp[$i]->image = 'http://www.24h.com.vn'.$temp[$i]->summaryImg;
 						
 					}
+					break;
+				default:
+					// for ($i=0; $i < count($temp); $i++) { 
+					// 	$temp[$i]->content = $this->content($temp[$i]->description, $temp1);
+					// 	$temp[$i]->image = $this->image($temp[$i]->description, $temp2);
+						
+					// }
 					break;
 			}
 			// for ($i=0; $i < count($temp); $i++) { 

@@ -19,7 +19,8 @@
 			  				echo "<div class='done'></div>";
 			  				echo "<input type='hidden' value='".$key."' class='image-new'>";
   						}
-			  			echo "<div class='image_check'><img src='".$url."/images/dantri.png'></div>";
+			  			echo "<div class='image_check selected'><img src='".$url."/images/logo/".$key.".png'></div>";
+			  			echo "<div class='name'>".$key."</div>";
 			  			echo "</li>";
   				}
   			} else {
@@ -32,7 +33,7 @@
 			  				echo "<div class='done'></div>";
 			  				echo "<input type='hidden' value='".$key."' class='image-new'>";
   						}
-			  			echo "<div class='image_check'><img src='".$url."/images/dantri.png'></div>";
+			  			echo "<div class='image_check selected'><img src='".$url."/images/logo/".$key.".png'></div>";
 			  			echo "</li>";
   				}
   			}
@@ -63,7 +64,7 @@
   			<div class="image_check"><img src="<?php echo Yii::app()->request->baseUrl;?>/images/dantri.png"></div>
   		</li> -->
   	</div>
-  	<input type="submit" value="Submit" id="submitSetting" >
+  	<input type="submit" value="Hoàn Thành" id="submitSetting" >
   	<!-- <a href="javascript:void(0);" id="submitSetting">submit</a> -->
 </div>
 </form>
@@ -88,16 +89,16 @@
 		</div>
 	</div> -->
 	<div class="new_all">
+		
 	<?php
 		$data = Yii::app()->cache;
-		// die(var_dump($data['dantri']));
+		// die(var_dump($data['24h']['channel']['item']));
 		// $data = $data['dantri']['channel']['item'];
 		// die(var_dump($data['vnexpress']));
-		
 		if($cookies) {
 			foreach ($cookies as $key => $valueSetting) {
-				$data_1 = $data[$key]['channel']['item'];
-				foreach ($data_1 as $value) { ?>
+				$temp = $data[$key]['channel']['item'];
+				foreach ($temp as $value) { ?>
 					<div class="new_left">
 						<div class="new_content">
 							<a href="<?php echo $value['link']; ?>" target="_blank"><img class="content" src="<?php echo $value['image']; ?>"></a>
@@ -108,8 +109,8 @@
 				<?php }
 			}
 		} else {
-			$data_1 = $data['vnexpress']['channel']['item'];
-			foreach ($data_1 as $value) { ?>
+			$temp = $data['vnexpress']['channel']['item'];
+			foreach ($temp as $value) { ?>
 				<div class="new_left">
 					<div class="new_content">
 						<a href="<?php echo $value['link']; ?>" target="_blank"><img class="content" src="<?php echo $value['image']; ?>"></a>
