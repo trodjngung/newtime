@@ -1,13 +1,13 @@
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; } /* HTML5 display-role reset for older browsers */ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; } body { line-height: 1; } ol, ul { list-style: none; } blockquote, q { quotes: none; } blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; } table { border-collapse: collapse; border-spacing: 0; }
 
-.header_bd {
+.header-bd {
 	background: #0044CC;
 	width: 100%;
 	height: 50px;
 	padding: 5px 0;
 	margin: 0;
 }
-.header_bd .header{
+.header-bd .header{
 	margin: 0 auto;
 	height: auto;
 	top: 10px;
@@ -40,20 +40,20 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 	top: 50px
 }
 .content .newbest,
-.content .new_all{
-	height: 200px;
-	border: 1px solid #000;
+.content .new-all{
+	height: 280px;
+	border: 1px solid #0044CC;
 	margin-top: 10px;
 }
 
 .content .newbest .newbest1,
-.content .new_all .new_left{
+.content .new-all .new-left{
 	border: 1px solid #000;
 	width: 23%;
 	height: 100%;
 	float: left;
 }
-.content .new_all .new,
+.content .new-all .new,
 .content .newbest .newbest2,
 .content .newbest .newbest3{
 	border: 1px solid #000;
@@ -63,19 +63,87 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 	margin-left: 2.3%;
 }
 .content .newbest .newbest4,
-.content .new_all .new_right{
+.content .new-all .new-right{
 	border: 1px solid #000;
 	width: 23%;
 	height: 100%;
 	float: right;
 }
-.new_content{
+
+.content .header-new{
+	height: 30px;
+	text-transform: uppercase;
+	color: #fff;
+	font-size: 20px;
+	font-weight: bold;
+	background: #0044CC;
+	padding-top: 5px;
+}
+.content .header-new img{
+	float: left;
+	margin-left: 15px;
+}
+.content .header-new h2{
+	float: left;
+	margin: 3px 0px 0px 15px;
+}
+.new-content{
 	border: 1px solid #000;
 	width: 100%;
 	height: 50%;
 	margin: 2px 0px;
 	float: left;
 }
+.title{
+	float: left;
+	font-weight: bold;
+	margin-bottom: 3px;
+}
+#tool-right{
+	position: fixed;
+	right: 2px;
+	float: right;
+	top: 67px;
+}
+#tool-right li{
+	width: 40px;
+	height: 40px;
+	margin-bottom: 8px;
+}
+#tool-right li:hover{
+	-webkit-box-shadow: 3px 3px 5px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    3px 3px 5px 0px rgba(50, 50, 50, 0.75);
+    box-shadow:         3px 3px 5px 0px rgba(50, 50, 50, 0.75);
+}
+#tool-right li a{
+	width: 100%;
+	height: 100%;
+}
+#tool-right .setting-right{
+	background-color: #0044CC;
+}
+#tool-right .facebook{
+	background-color: #305891;
+}
+#tool-right .twitter{
+	background-color: #fff;
+}
+#tool-right .setting-right a{
+	background: url("../images/setting.png") no-repeat;
+	background-size: contain;
+	float: right;
+}
+#tool-right .facebook a{
+	background: url("../images/facebook.png") no-repeat;
+	background-size: contain;
+	float: right;
+}
+#tool-right .twitter a{
+	background: url("../images/twitter.png") no-repeat;
+	background-size: contain;
+	float: right;
+}
+
 .footer{
 	background: #0044CC;
 	width: 100%;
@@ -103,7 +171,7 @@ img.content {
 	margin: 0px 5px 0px 0px;
 }
 
-img.btn_close {
+img.btn-close {
 	float: right; 
 	margin: -28px -28px 0 0;
 }
@@ -155,14 +223,14 @@ img.btn_close {
     right: 11px;
     top: 35px;
 }
-.setting-popup .setting-new .image_check{
+.setting-popup .setting-new .image-check{
 	width: 48px;
 	height: 48px;
 }
 .setting-popup .setting-new .selected{
 	border: 1px solid #0044CC;
 }
-.setting-popup .setting-new .box .image_check img{
+.setting-popup .setting-new .box .image-check img{
 	width: 48px;
 	height: 48px;
 }
@@ -172,7 +240,7 @@ img.btn_close {
 	text-align: center;
 	width: 80px;
 }
-.setting-popup .setting-new .box .image_check:hover,
+.setting-popup .setting-new .box .image-check:hover,
 #submitSetting:hover{
 	-webkit-box-shadow: 3px 3px 5px 0px rgba(50, 50, 50, 0.75);
     -moz-box-shadow:    3px 3px 5px 0px rgba(50, 50, 50, 0.75);
@@ -213,18 +281,18 @@ li {
 	}
 
 	.content .newbest,
-	.content .new_all{
+	.content .new-all{
 		height: 200px;
 		border: 1px solid #000;
 		margin-top: 10px;
 	}
 	.content .newbest .newbest1,
-	.content .new_all .new_left,
-	.content .new_all .new,
+	.content .new-all .new-left,
+	.content .new-all .new,
 	.content .newbest .newbest2,
 	.content .newbest .newbest3,
 	.content .newbest .newbest4,
-	.content .new_all .new_right{
+	.content .new-all .new-right{
 		border: 1px solid #000;
 		width: 100%;
 		height: 100%;

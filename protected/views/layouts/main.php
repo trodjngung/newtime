@@ -34,7 +34,9 @@
 				}
 
 			}); //end
-
+			function open_popup(){
+				window.open("http://www.facebook.com/share.php?u=http://rembachduong.vn");
+			}
 			//function click setting			
 			function clickSetting(){ 
 				var loginBox = $('a.setting-window').attr('href');
@@ -57,7 +59,7 @@
 		<!-- <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" /> -->
 	</head>
 	<body>
-		<div class="header_bd">
+		<div class="header-bd">
 			<div class="header">
 				<div class="logo">
 					<!-- <img height="70%" class="res" alt="Clear và Float" src="http://www.izwebz.com/wp-content/uploads/2009/08/xcss_series.jpg.pagespeed.ic.xUOM-YjJiV.jpg"> -->
@@ -67,12 +69,24 @@
 				</div>
 			</div>
 		</div>
-		
-		
 
 		<!-- content -->
 		<?php echo $content; ?>
-
+		<div class="clear"></div>
+		<div id="tool-right">
+			<ul>
+				<li class="setting-right">
+					<a href="#setting-box" onclick="clickSetting()"></a>
+				</li>
+				<li class="facebook">
+					<!-- <a href="#" onclick="clickSetting()"></a> -->
+					<a href="#" onclick="open_popup()"></a>
+				</li>
+				<li class="twitter">
+					<a href="#" onclick="clickSetting()"></a>
+				</li>
+			</ul>
+		</div>
 		<div class="clear"></div>
 		<div class="footer">
 			<h2>Trodjngung</h2>

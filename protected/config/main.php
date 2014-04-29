@@ -80,6 +80,7 @@ return array(
 			),
 		),
 		'xml'=>array('class'=>'XmlMgrComponent'),
+		'htmldom'=>array('class'=>'SimpleHtmlDom'),
 		
 		//cache
 		'cache'=>array( 

@@ -69,6 +69,20 @@ class XmlMgrComponent extends CApplicationComponent {
 						
 					}
 					break;
+				case 'bongda':
+					for ($i=0; $i < count($temp); $i++) { 
+						$temp[$i]->content = $temp[$i]->description;
+						$temp[$i]->image = 'images/logo/bongda.png';
+						
+					}
+					break;
+				case 'bongdaplus':
+					for ($i=0; $i < count($temp); $i++) { 
+						$temp[$i]->content = $temp[$i]->description;
+						$temp[$i]->image = 'images/logo/bongdaplus.png';
+						
+					}
+					break;
 				default:
 					// for ($i=0; $i < count($temp); $i++) { 
 					// 	$temp[$i]->content = $this->content($temp[$i]->description, $temp1);

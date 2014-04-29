@@ -2,7 +2,7 @@
 
 class SiteController extends Controller
 {
-	var $components = array('Xml');
+	var $components = array('Xml', 'HtmlDom');
 	var $url = array(
 			'24h'=>"http://www.24h.com.vn/upload/rss/tintuctrongngay.rss",
 			'dantri'=>"http://dantri.com.vn/trangchu.rss",
@@ -37,6 +37,12 @@ class SiteController extends Controller
 	 */
 	public function actionIndex()
 	{
+		// $test_url = 'http://www.bongda.com.vn/Bong-da-Anh/Giai-ngoai-hang-Anh/328563_Mourinho_toan_tinh_ra_sao_voi_tran_Liverpool_.aspx';
+		// $abc =  file_get_contents($test_url);
+		// if (is_string($abc)) {
+		// 	die(var_dump($abc));
+		// }
+
 		$setting = Yii::app()->request->cookies['setting'];
 		if(isset($_POST) && $_POST != NULL) {
 			Yii::app()->request->cookies->clear();
