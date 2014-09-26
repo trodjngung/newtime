@@ -94,10 +94,15 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 	margin: 2px 0px;
 	float: left;
 }
+.new-content .expandable{
+	width: 53%;
+	margin-bottom: 6px;
+}
 .title{
 	float: left;
 	font-weight: bold;
 	margin-bottom: 3px;
+	width: 100%;
 }
 #tool-right{
 	position: fixed;

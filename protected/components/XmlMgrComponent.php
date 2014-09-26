@@ -1,4 +1,5 @@
 <?php
+include '/protected/components/SimpleHtmlDom.php';
 class XmlMgrComponent extends CApplicationComponent {
 	var $DB = 'test';
 	public function xmlFileToString($filePath) {
@@ -33,6 +34,7 @@ class XmlMgrComponent extends CApplicationComponent {
 			$temp4 = '</a>';
 			$temp5 = '<span>';
 			$temp6 = '<br />';
+			$temp7 = '<strong>';
 			switch ($name) {
 				case 'vnexpress':
 					for ($i=0; $i < count($temp); $i++) { 
@@ -64,23 +66,41 @@ class XmlMgrComponent extends CApplicationComponent {
 					break;
 				case '24h':
 					for ($i=0; $i < count($temp); $i++) { 
-						$temp[$i]->content = $temp[$i]->description;
+						$temp[$i]->content = $this->cutContent($temp[$i]->description);
 						$temp[$i]->image = 'http://www.24h.com.vn'.$temp[$i]->summaryImg;
 						
 					}
 					break;
 				case 'bongda':
 					for ($i=0; $i < count($temp); $i++) { 
-						$temp[$i]->content = $temp[$i]->description;
-						$temp[$i]->image = 'images/logo/bongda.png';
-						
+						$temp[$i]->content = $this->cutContent($temp[$i]->description);
+						$link = $temp[$i]->link;
+						$temp[$i]->image = $this->imageBongDa($temp[$i]->link, 'align=justify');
 					}
 					break;
 				case 'bongdaplus':
 					for ($i=0; $i < count($temp); $i++) { 
-						$temp[$i]->content = $temp[$i]->description;
-						$temp[$i]->image = 'images/logo/bongdaplus.png';
-						
+						$temp[$i]->content = $this->cutContent($temp[$i]->description);
+						$link = $temp[$i]->link;
+						$temp[$i]->image = $this->imageBongDa($temp[$i]->link, 'class=contentbox');
+					}
+					break;
+				case 'zing':
+					for ($i=0; $i < count($temp); $i++) { 
+						$temp[$i]->content = $this->cutContent($temp[$i]->header);
+						$temp[$i]->image = $temp[$i]->enclosure['url'];						
+					}
+					break;
+				case 'thethao247':
+					for ($i=0; $i < count($temp); $i++) { 
+						$temp[$i]->content = $this->content($temp[$i]->description, $temp6);
+						$temp[$i]->image = $temp[$i]->image;						
+					}
+					break;
+				case 'reds':
+					for ($i=0; $i < count($temp); $i++) { 
+						$temp[$i]->content = $this->content($temp[$i]->description, $temp7);
+						$temp[$i]->image = $this->image($temp[$i]->description, $temp2);					
 					}
 					break;
 				default:
@@ -107,7 +127,16 @@ class XmlMgrComponent extends CApplicationComponent {
 		$input = (string)$input;
 		$content = explode($temp, $input);
 		
-		return $content[1];
+		return $this->cutContent($content[1]);
+	}
+
+	public function cutContent($string){
+		$data = explode(" ", $string);
+		if(count($data) <= 20) {
+			return implode(" ", $data);
+		} else {
+			return implode(" ", array_splice($data, 0, 20)).'...';
+		}
 	}
 
 	public function image($input, $temp){
@@ -118,6 +147,15 @@ class XmlMgrComponent extends CApplicationComponent {
 				$image = $value;
 		}
 		return $image;
+	}
+	
+	public function imageBongDa($link, $class){
+		
+		// $abc =  file_get_html($test_url);
+		// $temp = $abc->find('div[align=justify] img', 0);
+		$data = file_get_html($link);
+		$image = $data->find('div['.$class.'] img', 0);
+		return $image->src;
 	}
 }
 ?>

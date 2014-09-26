@@ -38,34 +38,8 @@
   				}
   			}
   		?>
-  		<!-- <li class="box">
-  			<div class="done"></div>
-  			<input type="hidden" value="dantri" class="image-new">
-  			<div class="image_check"><img src="<?php echo Yii::app()->request->baseUrl;?>/images/dantri.png"></div>
-  		</li>
-  		<li class="box">
-  			<div class="done"></div>
-  			<input type="hidden" value="vnexpress" class="image-new">
-  			<div class="image_check"><img src="<?php echo Yii::app()->request->baseUrl;?>/images/dantri.png"></div>
-  		</li>
-  		<li class="box">
-  			<div class="done"></div>
-  			<input type="hidden" value="kenh14" class="image-new">
-  			<div class="image_check"><img src="<?php echo Yii::app()->request->baseUrl;?>/images/dantri.png"></div>
-  		</li>
-  		<li class="box">
-  			<div class="done"></div>
-  			<input type="hidden" value="tinhte" class="image-new">
-  			<div class="image_check"><img src="<?php echo Yii::app()->request->baseUrl;?>/images/dantri.png"></div>
-  		</li>
-  		<li class="box">
-  			<div class="done"></div>
-  			<input type="hidden" value="phapluat" class="image-new">
-  			<div class="image_check"><img src="<?php echo Yii::app()->request->baseUrl;?>/images/dantri.png"></div>
-  		</li> -->
   	</div>
   	<input type="submit" value="Hoàn Thành" id="submitSetting" >
-  	<!-- <a href="javascript:void(0);" id="submitSetting">submit</a> -->
 </div>
 </form>
 <?php
@@ -100,25 +74,46 @@
 	</div>
 	<div class="clear"></div>
 	<div class="new-all">
-
+		<div class="header-new">
+			<img src="images/earth.png" width="25px">
+			<h2>tin thế giới</h2>
+		</div>
 	<?php
+		// include '/protected/components/SimpleHtmlDom.php';
+		// $url = "http://bongdaplus.vn/tin-bai/31/90352/0h30-ngay-6-5-steaua-bucharest-vs-corona-brasov.bdplus";
+		// $abc = file_get_html($url);
+		// echo '<h1>abc</h1>';
+		// foreach ($abc->find('div[class=contentbox] img') as $value) {
+		// 	echo $value->src.'</br>';
+		// }
+		// echo '<h1>abc</h1>';
+		
 		$data = Yii::app()->cache;
 		// die(var_dump($data['24h']['channel']['item']));
 		// $data = $data['dantri']['channel']['item'];
 		// die(var_dump($data['vnexpress']));
 		if($cookies) {
+			$i = 1;
 			foreach ($cookies as $key => $valueSetting) {
 				$temp = $data[$key]['channel']['item'];
-				foreach ($temp as $value) { ?>
-					<div class="new-left">
+				foreach ($temp as $value) {
+					if ($i % 4 == 1) {
+						echo '<div class="new-left">';
+					} elseif ($i % 4 ==0) {
+						echo '<div class="new-right">';
+					} else {
+						echo '<div class="new">';
+					}
+					
+					?>
 						<div class="new-content">
 							<a href="<?php echo $value['link'] ?>" class="title" target="_blank"><?php echo $value['title'] ?></a>
 							<a href="<?php echo $value['link']; ?>" target="_blank"><img class="content" src="<?php echo $value['image']; ?>"></a>
-							<span><?php echo $value['content']; ?></span>
+							<span class="expandable"><?php echo $value['content']; ?></span>
 						</div>
 						<div class="new-content"></div>
 					</div>
-				<?php }
+				<?php $i += 1; }
 			}
 		} else {
 			$temp = $data['vnexpress']['channel']['item'];
@@ -127,7 +122,7 @@
 					<div class="new-content">
 						<a href="<?php echo $value['link'] ?>" class="title" target="_blank"><?php echo $value['title'] ?></a>
 						<a href="<?php echo $value['link']; ?>" target="_blank"><img class="content" src="<?php echo $value['image']; ?>"></a>
-						<span><?php echo $value['content']; ?></span>
+						<span class="expandable"><?php echo $value['content']; ?></span>
 					</div>
 					<div class="new-content"></div>
 				</div>

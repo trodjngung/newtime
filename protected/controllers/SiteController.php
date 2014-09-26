@@ -11,6 +11,9 @@ class SiteController extends Controller
 			'kenh14'=>"http://kenh14.vn/home.rss",
 			'bongda'=>'http://www.bongda.com.vn/Rss/',
 			'bongdaplus'=>'http://bongdaplus.vn/rss/trang-chu.rss',
+			'zing'=>'http://news.zing.vn/rss/trang-chu.rss',
+			'thethao247'=>'http://thethao247.vn/home.rss',
+			'reds'=>'http://reds.vn/index.php/thoi-su?format=feed&type=rss',
 		);
 	/**
 	 * Declares class-based actions.
@@ -37,10 +40,15 @@ class SiteController extends Controller
 	 */
 	public function actionIndex()
 	{
+		// include '/protected/components/SimpleHtmlDom.php';
 		// $test_url = 'http://www.bongda.com.vn/Bong-da-Anh/Giai-ngoai-hang-Anh/328563_Mourinho_toan_tinh_ra_sao_voi_tran_Liverpool_.aspx';
-		// $abc =  file_get_contents($test_url);
-		// if (is_string($abc)) {
-		// 	die(var_dump($abc));
+		// $abc =  file_get_html($test_url);
+		// $temp = $abc->find('div[align=justify] img', 0);
+		// echo $temp;
+		// // die(var_dump($temp));
+		// foreach ($abc->find('div[align=justify] img') as $temp) {
+		// 	echo $temp.'</br>';
+		// 	// break;
 		// }
 
 		$setting = Yii::app()->request->cookies['setting'];
